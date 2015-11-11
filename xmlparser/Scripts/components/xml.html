@@ -1,0 +1,21 @@
+﻿{{#with:params}}
+    <li>
+        {{#if:key==="_text"}}
+            <span class="clickable" click="{{ function(){alert($xpath + '/text()')} }}">{{value}}</span>
+        {{/if}}
+        {{#if:key!=="_text"}}
+            &lt;<span class="clickable" click="{{ function(){alert($xpath + '/' + key)} }}">{{key}}</span>
+            {{#iterate:{data:value, key:key}}}
+                {{#foreach:$attributes}}
+                    <span class="clickable" click="{{ function(){alert($xpath + '/@' + key)} }}">{{key}}=&quot;{{value}}&quot;</span>
+                {{/foreach}}&gt;
+                <ul>
+                    {{#foreach:$iterate}}
+                        {{#component: {name:'xml', params:$data}/}}
+                    {{/foreach}}
+                </ul>
+            {{/iterate}}
+            &lt;/{{key}}&gt;
+        {{/if}}
+    </li>
+{{/with}}

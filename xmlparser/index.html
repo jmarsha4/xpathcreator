@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script data-main="scripts/app/main" src="scripts/require.js"></script>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/font-awesome.min.css" rel="stylesheet" />
+    <link href="Content/site.css" rel="stylesheet" />
+</head>
+<body>
+    <textarea rows="5" cols="150" data-bind="value:xml, valueUpdate:'input'" ></textarea>
+    {{#xmlToJson: xml}}
+        {{#if:$jsonError}}
+            <h1 class="attention"><i class="fa fa-frown-o"></i>invalid xml</h1>
+        {{/if}}
+        {{#iterate:{data:[$json()], key:''}}}
+        <ul>
+            {{#foreach:$iterate}}
+                {{#component: {name:'xml', params:$data}/}}
+            {{/foreach}}
+        </ul>
+        {{/iterate}}
+    {{/xmlToJson}}
+
+</body>
+</html>
