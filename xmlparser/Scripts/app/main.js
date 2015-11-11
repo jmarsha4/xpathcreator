@@ -32,7 +32,8 @@ require(["jquery", "knockout", "punches", "ko-xml"], function ($, ko) {
 
     ko.punches.enableAll();
     var viewModel = {
-        xml: ko.observable('<xml hello="oh" goodbye="ah">xml text  <morexml>some more text</morexml><evenmorexml>some more text</evenmorexml> and some text hee</xml>')
+        xml: ko.observable('<xml hello="oh" goodbye="ah">xml text  <morexml>some more text <and>some <and>some <and>some more<and>some more<and>some more</and></and></and> more</and> more</and></morexml><evenmorexml>some more text</evenmorexml> and some text hee</xml>')
     };
-    ko.applyBindings(viewModel);
+    setTimeout(function () { ko.applyBindings(viewModel); }, 1000);
+    
 });

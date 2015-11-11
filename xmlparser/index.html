@@ -8,19 +8,23 @@
     <link href="Content/site.css" rel="stylesheet" />
 </head>
 <body>
-    <textarea rows="5" cols="150" data-bind="value:xml, valueUpdate:'input'" ></textarea>
-    {{#xmlToJson: xml}}
-        {{#if:$jsonError}}
+    <div style="display:block" data-bind="attr:{style:'display:none'}">
+        <h1 style="font-size:4em; margin:100px 100px; color:magenta "><i class="fa fa-5x fa-spin fa-space-shuttle"></i></h1>
+    </div>
+        <div style="display:none" data-bind="attr:{style:'display:block'}">
+            <textarea rows="5" cols="150" data-bind="value:xml, valueUpdate:'input'"></textarea>
+            {{#xmlToJson: xml}}
+            {{#if:$jsonError}}
             <h1 class="attention"><i class="fa fa-frown-o"></i>invalid xml</h1>
-        {{/if}}
-        {{#iterate:{data:[$json()], key:''}}}
-        <ul>
-            {{#foreach:$iterate}}
+            {{/if}}
+            {{#iterate:{data:[$json()], key:''}}}
+            <ul>
+                {{#foreach:$iterate}}
                 {{#component: {name:'xml', params:$data}/}}
-            {{/foreach}}
-        </ul>
-        {{/iterate}}
-    {{/xmlToJson}}
-
+                {{/foreach}}
+            </ul>
+            {{/iterate}}
+            {{/xmlToJson}}
+        </div>
 </body>
 </html>

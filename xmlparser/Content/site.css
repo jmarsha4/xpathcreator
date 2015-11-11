@@ -1,3 +1,9 @@
 ﻿ul {list-style:none}
 .clickable { cursor:pointer}
 .attention {color:red;}
+
+.centered {
+  position: fixed; /* or absolute */
+  top: 48%;
+  left: 45%;
+}
